@@ -3,6 +3,7 @@ import { Server } from "socket.io";
 import app from "./app";
 import listen from "./socketServer";
 import envVariables from "./config";
+// import { seedRoomsData } from "./services/chatServices";
 
 const { PORT } = envVariables;
 
@@ -14,7 +15,8 @@ const io = new Server(httpServer, {
   },
 });
 
-const startServer = () => {
+const startServer = async () => {
+  // await seedRoomsData();
   httpServer.listen(PORT, () => {
     console.log(`server is running on ${PORT}`);
   });

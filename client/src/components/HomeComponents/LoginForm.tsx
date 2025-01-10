@@ -1,14 +1,14 @@
-import { useRef, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChatContext } from "../../store/chat-context";
 import useFormValidation from "../../hooks/useFormValidation";
 import Error from "../commons/Error";
 
 const LoginForm = () => {
-  const chatCtx = useContext(ChatContext);
+  const [username, setUsername] = useState<string>("");
+  const [room, setRoom] = useState<string>("");
 
-  const usernameRef = useRef<HTMLInputElement>(null);
-  const roomRef = useRef<HTMLSelectElement>(null);
+  const chatCtx = useContext(ChatContext);
 
   const [formIsValid, formError, checkFormIsValid] = useFormValidation();
 
@@ -16,13 +16,6 @@ const LoginForm = () => {
 
   const messageSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
-
-    const username: string | undefined = usernameRef?.current?.value || "";
-    const room: string | undefined = roomRef?.current?.value || "";
-
-    if (typeof checkFormIsValid === "function") {
-      checkFormIsValid(username, room);
-    }
 
     if (!formIsValid) {
       return;
@@ -34,6 +27,12 @@ const LoginForm = () => {
 
     return navigate(`/chat?room=${room}&username=${username}`);
   };
+
+  useEffect(() => {
+    if (typeof checkFormIsValid === "function") {
+      checkFormIsValid(username, room);
+    }
+  }, [username, room]);
 
   return (
     <section className="container mt-5">
@@ -52,12 +51,15 @@ const LoginForm = () => {
                 type="text"
                 placeholder="Enter Username"
                 className="form-control"
-                ref={usernameRef}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
 
             <div className="form-group mb-3">
-              <select className="form-control" ref={roomRef}>
+              <select
+                className="form-control"
+                onChange={(e) => setRoom(e.target.value)}
+              >
                 <option></option>
                 <option>Relationship</option>
                 <option>Sports</option>

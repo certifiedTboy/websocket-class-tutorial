@@ -1,6 +1,6 @@
 .chat_container {
   background-color: rgb(0, 0, 19);
-  height: 100vh !important;
+  /* height: 100vh !important; */
 }
 
 .chat_container h1 {
