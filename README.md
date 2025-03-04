@@ -2,7 +2,7 @@
 
 ## Software Development Bootcamp
 
-##### Deep dive into understanding websocket, building chat application with (React Js, Express Js, Typescript)
+##### Deep dive into understanding websocket, building chat application with (React Js, Express Js, Typescript) with implementation of file sharing functionality powered by cloudinary
 
 ## Technologies
 
