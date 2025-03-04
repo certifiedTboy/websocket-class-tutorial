@@ -11,7 +11,8 @@
 - [Prima ORM for schema and data modelliing](#)
 - [Socket.io for real time messaging](#);
 - [React Js For client side](#)
-- [React context for global state management]()
+- [React context for global state management](#)
+- [cloudinary for file sharing](#)
 - [Typescript for Development](#)
 
 ### Get Started
